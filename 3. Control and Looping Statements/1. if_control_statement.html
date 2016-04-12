@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>If Control Statements</title>
+	<script>
+	/*
+		There are three control statments in JS, they are no different in comparision to other programming languages. (C, C++, Java)
+		They are:
+		1) if...else if...else
+		2) switch
+		3) Conditional (ternary) Operator
+	*/
+
+
+	// # if control statement
+
+	function ASCIItoText(){
+		var numberInStringFormat = prompt("Please Enter a ASCII number between 65 and 122. I will tell you it string equivalent");
+
+		if(numberInStringFormat === null) // if user cancels the prompt, prompt() returns null.
+		{
+			document.getElementById("output").style.color = "red";
+			document.getElementById("output").innerHTML = "You canceled. Refesh page to restart.";
+			return;
+		}
+		
+		var regEx = /^[0-9]{2,3}$/; // Regular Expression. This allows only 0 to 9 numbers with minimum 2 digits and maximum 3 digits.
+
+		if(regEx.test(numberInStringFormat))  // String entered by user is tested against our Regular Expression [using inbuilt test()]
+		{
+			var number = parseInt(numberInStringFormat);
+			
+			var spanObject = document.getElementById("output"); // We can save reference of DOM Objects, in this case it is of <span>
+
+			if(number >= 65 && number <= 122)
+			{
+				var character = String.fromCharCode(number); // It takes a number (ASCII) and returns String Character equivalent
+
+				spanObject.style.color = "green";
+				spanObject.style.fontWeight = "bold";
+				spanObject.innerText = character;
+			}
+			else
+			{
+				spanObject.style.color = "red";
+				spanObject.innerHTML = "Please refresh page and enter correct value";
+			}	
+		}
+		else
+		{
+			document.getElementById("output").style.color = "red";
+			document.getElementById("output").innerHTML = "Please refresh page and enter correct value";
+		}
+	}
+	</script>
+</head>
+<body onload="ASCIItoText()">
+	Result : <span id="output"></span>
+</body>
+</html> 

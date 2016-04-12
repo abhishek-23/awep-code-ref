@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Operators</title>
+	<script>
+		var timeAtPageLoad = new Date();
+
+		var id = setInterval(function(){
+			var timeNow = new Date();
+
+			var timeDifference = timeNow.getSeconds() - timeAtPageLoad.getSeconds();
+
+			if(timeDifference >= 10)
+				window.location = "http://www.w3schools.com/js/js_operators.asp";
+			else
+				document.getElementsByTagName('span')[0].innerText = 10 - timeDifference;
+		}, 1000);
+		
+		function stopRedirection(that){
+			clearInterval(window.id);
+			document.getElementsByTagName('span')[1].style.display = "";
+			that.setAttribute("disabled","disabled");
+		}
+	</script>
+</head>
+<body>
+	<h1>Please refer 'JS Operators' from w3schools.com</h1>
+	<p>This page will redirect in <span>10</span> seconds</p>
+	<span style="color: green; display: none;">Redirection Stopped</span><br>
+	<button onclick="stopRedirection(this);">Stop Redirection</button>
+</body>
+</html> 

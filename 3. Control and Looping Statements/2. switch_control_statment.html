@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>If Control Statements</title>
+	<script>
+	/*
+		There are three control statments in JS, they are no different in comparision to other programming languages. (C, C++, Java)
+		They are:
+		1) if...else if...else
+		2) switch
+		3) Conditional (ternary) Operator
+	*/
+
+	var monthNames = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+	function displaySeason(monthNumberString){
+		var monthNumber = parseInt(monthNumberString)
+		switch(monthNumber){
+			case 1: case 2: case 3: case 4:
+				spanObject.innerHTML = "Month : " + monthNames[monthNumber - 1] + "<br>Season : Summer";
+				break;
+
+			case 5: case 6: case 7: case 8:
+				spanObject.innerHTML = "Month : " + monthNames[monthNumber - 1] + "<br>Season : Rainy";
+				break;
+
+			case 9: case 10: case 11: case 12:
+				spanObject.innerHTML = "Month : " + monthNames[monthNumber - 1] + "<br>Season : Winter";			
+				break;
+			default:
+               spanObject.innerHTML = "Please enter valid month number";
+		}
+	}
+
+	function start(){
+		var userdata  = prompt('Please enter any month number (i.e. between 1 to 12)');
+
+		displaySeason(userdata);
+	}
+	</script>
+</head>
+<body onload="start()">
+	<span id="output"></span>
+	<script>
+		var spanObject = document.getElementById("output");
+	</script>
+</body>
+</html> 
