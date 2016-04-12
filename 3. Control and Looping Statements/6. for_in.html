@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>For_In Loop</title>
+</head>
+<body>
+	<h1>for_in Loop</h1>
+
+	<button onclick="loadData();">Load Data from local JS Array</button>
+	<br><br>
+	<div id="dataholder"></div>
+	<script>
+		/*
+			There are four types of loops in JS:
+			1) for
+			2) while
+			3) do while
+			4) for in
+		*/
+
+		var oneUserData = 	{
+								name: "Rohan Mahalaha",
+								age: 30,
+								profession:	"Software Engineer" 
+							};
+
+		function loadData(){			
+
+			var htmlstring = "<table border=\"1\" >";
+
+			for(var temp in oneUserData)
+			{
+				htmlstring += "<tr><td>"  +  oneUserData[temp] + "</td></tr>";
+				
+				// Check what is there in temp variable when looping is happening				
+				console.log(temp);
+			}
+
+			htmlstring += "</table>";
+		
+			document.getElementById("dataholder").innerHTML = htmlstring;
+		}
+	</script>
+</body>
+</html> 

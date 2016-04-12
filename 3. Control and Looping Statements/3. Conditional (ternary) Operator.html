@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Conditional (ternary) Operator</title>
+</head>
+<body>
+	<h1>Conditional (ternary) Operator</h1>
+	<script>
+		/*
+			There are three control statments in JS, they are no different in comparision to other programming languages. (C, C++, Java)
+			They are:
+			1) if...else if...else
+			2) switch
+			3) Conditional (ternary) Operator
+		*/
+		var changeColor = confirm("Click 'Ok' to change background colour green. 'Cancel' to change color to orange"); // confirm() returns true if user clicks 'Ok' and false if user clicks 'Cancel'. So. changeColor variable will contain a boolean value.
+
+		var color = (changeColor ? "green" : "orange");
+		
+		document.getElementsByTagName('body')[0].style.backgroundColor = color;
+		/*
+			instead of above line we can could have also written the below line, both are internally doing same task:
+
+		 	document.body.style.backgroundColor = color; 
+		*/
+
+		changeColor ? alert("Color changed to Green.") : alert("Color changed to Orange.");
+	</script>
+</body>
+</html> 

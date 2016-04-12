@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>for Loop</title>
+</head>
+<body>
+	<h1>for Loop</h1>
+	<button onclick="loadData();">Load Data from local JS Array</button>
+	<br><br>
+	<div id="dataholder"></div>
+	<script>
+		/*
+			There are four types of loops in JS:
+			1) for
+			2) while
+			3) do while
+			4) for in
+		*/
+
+		var userData = 	[
+							{
+								name: "John Smith",
+								age: 38,
+								profession: "Software Engineer"
+							},
+							{
+								name: "Rose Peltrow",
+								age: 28,
+								profession: "Chef"
+							},
+							{
+								name: "Tarun Shah",
+								age: 22,
+								profession: "Professional Photographer"
+							},
+							{
+								name: "Roshni Chopra",
+								age: 31,
+								profession: "Actor"
+							}
+						];
+
+		function loadData(){			
+
+			var htmlstring = "<table border=\"1\" >";
+
+			htmlstring += "<tr><th>Name</th><th>Age</th><th>Profession</th></tr>";
+
+			for(var i = 0; i < userData.length; i++)
+			{
+				htmlstring += "<tr><td>" + userData[i].name + "</td><td>" + userData[i].age + "</td><td>" + userData[i].profession + "</td></tr>";
+			}
+
+			htmlstring += "</table>";
+		
+			document.getElementById("dataholder").innerHTML = htmlstring;
+		}
+	</script>
+</body>
+</html> 
