@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Datatypes helper (predefined) methods/properties in Javascript</title>
+	<script>
+		/* 
+			Primitive Datatypes	: 	Numbers, Boolean, Strings have some helper methods with them. undefined and null doesn't have so.
+
+				--> Note: Even though primitive datatype are not Objects, they have some predefined helper methods (or properties) with them. This is possible due to type coercion.
+
+			Object Datatypes	:	Arrays, Functions, Objects (i.e. user created objects) also have some helper methods by-default.
+		*/
+
+// ---------------------------------------------------------------------------------------
+		// # STRING
+
+		// Helper methods/properties: length, split(), replace(), toLowerCase(), toUpperCase(), slice(), charAt(), charCodeAt(), trim(), includes()
+		var myDateString	=	'12/04/2016';
+
+		myDateString.length
+		// output --> 10
+
+		myDateString.split("/");
+		// output --> ["12", "04", "2016"]
+
+		// save the above array to a variable like below:
+		var dateArray 	= 	myDateString.split("/");
+		// alert(dateArray[1]);
+		// output --> alerts 04 in the web-browser
+
+		myDateString.replace("2016", "2020");
+		// output --> "12/04/2020"
+
+		var name = "John Smith";
+		
+		name.toLowerCase();
+		// output --> "john smith"
+
+		name.toUpperCase();
+		// output --> "JOHN SMITH"
+
+		name.slice(3,10) // Cuts the string and returns string between position/index 3 and position/index 10
+		// output --> "n Smith"
+
+		name.charAt(5)  // Outputs the character at position/index 5
+		// output --> 'S'
+
+		name.charCodeAt(5)  // Outputs the ASCII Value at position/index 5. In this case ASCII of 'S' is 83
+		// output --> 83
+
+		var surName = "   Rahul Sharma ";
+		
+		surName.trim();  // Removes all white spaces from extreme left and extreme right of the whole string
+		// output --> "Rahul Sharma"
+
+		surName.includes("Sharma");
+		// output --> true
+
+// ---------------------------------------------------------------------------------
+
+		// # NUMBERS
+
+		// Helper methods/properties: toPrecision(), toLocaleString()
+		var temperature	=	98.6;
+		
+		temperature.toPrecision(4)
+		// output --> 98.60
+
+		temperature.toPrecision(2)
+		// output --> 99
+
+		var money = 348573459;
+	
+		money.toLocaleString();  // default locale is your computer's O.S. locale (in most cases it is "en-IN")
+		// output --> "348,573,459"
+
+		money.toLocaleString("hi-IN"); // 'hi' means hindi, 'IN' means India, "hi-IN" is called a locale.
+		// output --> "34,85,73,459" 
+
+// --------------------------------------------------------------------------------
+
+		// # BOOLEANS: They have some methods but non of them is very useful.
+
+		// Helper methods/properties: toString()
+		var flag	=	true;
+
+		flag.toString();
+		// output --> "true" 
+
+// --------------------------------------------------------------------------------
+
+		// # ARRAYS:
+
+		//  Helper methods/properties: length, sort(), concat(), pop(), push(), shift(), unshift(), reverse(), toString()
+ 
+		var nameList = ["Rohan", "Rahul", "Kirti", "Nikita"];
+
+		nameList.length
+		// output --> 4
+
+		nameList.sort(); // Sorts the array contents according to alphabetical order
+		// output --> ["Kirti", "Nikita", "Rahul", "Rohan"]
+
+		nameList.concat(["Kanika", "Tanmay"]); // Combine two arrays into one new list and returns that list
+		// output --> ["Kirti", "Nikita", "Rahul", "Rohan", "Kanika", "Tanmay"]
+
+		nameList.toString();
+		// output --> "Kirti,Nikita,Rahul,Rohan"
+
+		// NOTE: Please visit w3schools.com for pop(), push(), shift(), unshift()
+// -----------------------------------------------------------------------------------
+
+		// # OBJECTS: Have one important method called 'hasOwnProperty', but to fully understand this method you need to learn Javascript's prototypal inheritance (also called prototype chaining).
+
+		//  Helper methods/properties: hasOwnProperty()
+	
+		var s1 = {
+					fullname: "Raj Sharma", 
+					age: 20, 
+					getName: function(){ return this.name; }, 
+					getAge: function(){ return this.age; }
+				 };
+
+		s1.hasOwnProperty("fullname");
+		// output --> true
+
+	</script>
+</head>
+<body>
+	<h1>Datatypes helper (predefined) methods/properties in Javascript</h1>
+	<p>Please see the html code.</p>
+</body>
+</html> 

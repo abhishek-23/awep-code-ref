@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All possible data types in JS</title>
+	<script>
+		/* 
+			Primitive Datatypes	: 	Numbers, Boolean, Strings, undefined, null
+			Object Datatypes	:	All rest are Objects by-default. This includes Arrays, Functions, Objects (user created)
+		*/
+
+		/* 
+			Variable names and function names are called 'Identifiers'. 
+			Identifies can have a to z, A to Z, 0 to 9, $, _ symbols. 
+			Identifies name cannot start with symbols 0 to 9.
+		*/
+
+		// Strings: Three ways to create Strings:
+		var firstName 	=	"Bill";
+		var fullName	=	'Bill Gates';
+		var surName		=	new String("Gates"); // Using inbuilt 'String' Constructor along with 'new' operator
+
+			// If you want to add " or ' into the string, escape it using \ :
+			var sentence1	=	'Rahul\'s mother is ill';
+			var sentence2	=	"Please pay attention to signboards with \"Danger\" written on it";		
+
+
+		// Numbers: JS has no seperate int or float types, all are simply numbers
+		var year 		=	2016;
+		var temperature	=	98.6;
+		var PIvalue		=	new Number(3.14); // Using inbuilt 'Number' Constructor along with 'new' operator
+
+
+		// Boolean: can have only two values
+		var isTodaySunday	=	false;
+		var flag			=	true;
+		var testPassed		=	new Boolean(false);  // Using inbuilt 'Boolean' Constructor along with 'new' operator
+
+
+		// Arrays: There are two ways to create Arrays
+		var nameList = ["Rohan", "Rahul", "Kirti", "Nikita"];  // <-- Arrays are created using Array Literals (i.e. [] symbols are used)
+		var calenderMonths = new Array("Jan", "Feb", "March", "April"); // <-- Arrays can be create using inbuilt 'Array' Constructor.
+
+
+		// Objects: There are three ways to create objects:
+		
+		// 1st Method: Creating Objects directly using Object literals (i.e. {} symbols are used)		
+		var s1 = {fullname: "Raj Sharma", age: 20, getName: function(){ return this.name; }, getAge: function(){ return this.age; }};
+
+		// 2nd Method: Creating Contructors first (using functions). Then creating object using 'new' operator
+			// Below we've created a Constructor named 'Student' using a function
+		function Student(name, age)
+		{
+			this.fullname 	= 	name;
+			this.age 		= 	age;
+			this.getName	=	function()
+								{
+									return this.fullname;
+								};
+			this.getAge		=	function()
+								{
+									return this.age;
+								};
+
+		}
+	
+		var s2 = new Student("Richa Gupta", 18);  // <-- Using 'new' operator along with Contructor we've created an object 's2'
+
+		// 3rd Method: Create blank object using inbuilt "Object" Constructor and then add properties to it later.
+		var s3 = new Object();
+		s3.fullname = 	"Jack Ma";
+		s3.age		=	31;
+		s3.getName	=	function()
+						{
+							return this.fullname;
+						};
+		s3.getAge	=	function()
+						{
+							return this.age;
+						};
+
+		var myName; 				// myName is auto initialized with undefined.
+		var mySurName = undefined; 	// We initialized mySurName with undefined
+		var myMiddleName = null; 	// We initialized myMiddleName with null (maybe to indicated that person doesn't have middle name)
+	</script>
+</head>
+<body>
+	<h1>All possible datatypes in Javascript</h1>
+	<p>Please see the html code.</p>
+</body>
+</html> 
