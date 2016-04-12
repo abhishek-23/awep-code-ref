@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Immediately Invoked Function Expressions (IIFE)</title>
+</head>
+<body>
+	<h1>Immediately Invoked Function Expressions (IIFE)</h1>
+	<p>See HTML Code to understand what is hapening here.</p>
+	<script>
+		/*
+			IIFE (Immediately Invoked Function Expressions) are functions which are called/invoked as soon as they are defined.
+			Functions are normally defined to do repeated tasks. But sometimes we need to do task only once and hence we can use IIFE to execute the one time task. Since, IFFE function's reference is not stored in a variable (because anonymous function is used, see syntax below) it also save us some memory. 
+			NOTE: IFFE function's are also used to induce a scope into the program, this is an advanced topic, maybe we see IIFE used during an AJAX code implementations.
+		*/
+		
+		var c = (function sum(a, b){ return a + b; })(1, 2);
+
+		alert(c);
+
+		// output --> 3
+
+	</script>
+</body>
+</html> 

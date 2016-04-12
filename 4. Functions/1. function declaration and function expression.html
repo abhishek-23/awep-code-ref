@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Functions</title>
+</head>
+<body>
+	<h1>Functions</h1>
+	<p>See HTML Code to understand what is hapening here.</p>
+	<script>
+		/*
+			There are two ways of defining a function :
+			1) Simple Function declaration (Old way)
+			2) Function expression
+		*/
+
+		// 1) Simple function declaration
+		function alertUsers1(){
+			alert("This is old way of defining function.");
+		} // semi-colon is not placed. Not required, nor even advised. Why? Because JS is WEIRD.
+
+		// 2) Function Expression
+		var alertUsers2 = function(){  
+			alert("This is new way of defining function.");
+		}; // semi-colon is also placed at the end. It will be auto inserted if not placed, but it is advised to put semicolons.
+
+
+		// Calling both functions
+		alertUsers1();
+		alertUsers2();
+
+		// Assigning function to another (newly created) variable
+		var myalert1 = alertUsers1;
+		var myalert2 = alertUsers2;
+
+		// Again, calling functions with the new name
+		myalert1();
+		myalert2();
+
+		// My faltu object (initially blank object)
+		var faltu = {};
+
+		// Assigning function to method of faltu object
+		faltu.alert1 = alertUsers1;
+		faltu.alert2 = alertUsers2;
+		faltu.alert3 =  function(){
+							alert("Faltu Object Alert 3 is called");
+						};
+		
+		// Calling faltu object methods
+		faltu.alert1();
+		faltu.alert2();
+		faltu.alert3();
+	</script>
+</body>
+</html> 
