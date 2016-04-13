@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Programming</title>
+</head>
+<body>
+	<h1>Event Programming</h1>
+	<button onclick="handlerForButton1();">Button 1</button>
+	<button id="button2">Button 2</button>
+	<button id="button3">Button 3</button>
+	<script>
+		/* 
+			Event-driven programming is a programming paradigm in which the flow of the program is determined by events such as user actions (mouse clicks, key presses).
+
+			User actions (mouse clicks, key presses) causes events to occur, below is an incomplete list of some of the events. Such events can be registered with handlers functions. Handler functions will be called automatically by the web-browser when that particular event occurs. (on user's interaction with webpage)
+			
+	List of some commonly used events:
+		1) onclick
+		2) onchange
+		3) onblur
+		4) onfocus
+		5) onsubmit
+		6) onmouseenter
+		7) onmouseleave
+		8) onmousemove
+		9) onkeypress
+		10) onload
+		11) ondblclick
+
+	There are three ways you can assign handler function to the events listed above.
+		1) using attributes ---> e.g. <button onclick="call_to_handler_function() ">Click Me!</button>
+		2) using node object properties ---> e.g. document.getElementById("anyID").onclick = function(){ alert("Hello"); };
+		3) using addEventListener() ---> e.g. document.getElementById("anyID").addEventListener('click', function(){ alert("Hello"); });
+
+		All of the above three methods are used to attach/register handler functions to Button 1, Button 2, Button 3 in below code:
+		*/
+
+		function handlerForButton1()
+		{
+			alert("Button 1 Clicked!");
+		}
+
+		function handlerForButton2()
+		{
+			alert("Button 2 Clicked!");			
+		}
+
+		function handlerForButton3()
+		{ 
+			alert("Thank you for clicking button 3"); 
+		}
+
+		document.getElementById("button2").onclick = handlerForButton2;
+
+		// we can manually call the event also
+		document.getElementById("button2").onclick();
+		
+		var button3Object = document.getElementById("button3");		
+		// addEventListener() can be used to attach multiple same type events too (in this case click/onclick) to single button (node object)
+		button3Object.addEventListener('click', function(){ alert("Button 3 Clicked!"); });
+		button3Object.addEventListener('click', handlerForButton3);
+
+		button3Object.addEventListener('mouseenter', function(){ button3Object.style.backgroundColor = "Green"; });		
+		button3Object.addEventListener('mouseleave', function(){ button3Object.style.backgroundColor = ""; });		
+	</script>
+</body>
+</html> 

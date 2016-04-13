@@ -8,12 +8,12 @@
 		var id = setInterval(function(){
 			var timeNow = new Date();
 
-			var timeDifference = timeNow.getSeconds() - timeAtPageLoad.getSeconds();
+			var timeDifference = timeNow.getTime() - timeAtPageLoad.getTime(); // getTime() returns unix timestamp (milli-seconds from 1970)
 
-			if(timeDifference >= 10)
+			if(timeDifference >= 10000) // 10,000 milli-seconds means 10 seconds
 				window.location = "http://www.w3schools.com/js/js_operators.asp";
 			else
-				document.getElementsByTagName('span')[0].innerText = 10 - timeDifference;
+				document.getElementsByTagName('span')[0].innerText = 10 - Math.round(timeDifference / 1000);
 		}, 1000);
 		
 		function stopRedirection(that){
