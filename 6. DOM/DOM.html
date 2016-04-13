@@ -1,0 +1,87 @@
+<html>
+<head><title>Document Object Model</title></head>
+<body>
+	<h1 id="heading" class="heading-group">DOM</h1>
+	<h4 class="heading-group">Please Note:</h4>
+	<p>See HTML Code.</p>
+	<img src="dom.gif" />
+	<input type="text" name="fullname" value="Garbage Text" style="display: none;" />
+	<script>
+		/*
+			Document Object Model (DOM) is Object representation of html document. What this means is, when Web Browser loads a webpage on users request, it internally also creates an object hierarchy i.e. create an object for each html <tag>. Javascript then can access (or grab) these objects in various ways (e.g. document.getElementById() or document.getElementsByTagName() etc) so that it can perform various tasks on html document. (tasks like changing css via  document.getElementById("someID").style.backgroundColor = "Red"; or changing innerHTML of any <div> via document.getElementsByTagName("div")[0].innerHTML = "<h1>Hello World</h1>"
+
+		These objects created by browser are called "Node Objects" or just "Nodes". There are 5 major types of Nodes that we must know, they are:
+		1) document Node	--->	This is root node object. All other node objects are contained in this Node.
+		2) Element Node		--->	Element node are nodes objects are all those object which are html <tags>
+		3) Attribute Node	--->	Attribute nodes are contained inside Element nodes, since attributes are applied over html <tags>
+		4) Text Node		--->	Every visible Text is text node. It also includes invisible white space and ↵ 
+		5) Comment Node		--->	All the comments (e.g. <!--  This is comment --> ) become comment nodes.
+		*/
+
+		console.dir(document);  // console.dir() shows the inner Contents of the any object. I've passed root node object 'document'.
+
+		/*
+		 	You need to grab the Node object first, here are some of the ways listed:
+			1) document.getElementById("heading")
+			2) document.getElementsByClassName("heading-group")
+			3) document.getElementsByName("fullname")
+			4) document.getElementsByTagName("h1")
+
+		*/
+
+			var pageHeadingObject 		= 	document.getElementById("heading");					// returns object directly
+			var allHeadingsObjects 		= 	document.getElementsByClassName("heading-group");	// returns array of objects
+			var inputTagObject 			= 	document.getElementsByName("fullname");				// returns array of objects
+			var allH1HeadingTagObjects 	= 	document.getElementsByTagName("h1");				// returns array of objects
+
+
+			// .innerHTML property
+			console.log(pageHeadingObject.innerHTML);
+			pageHeadingObject.innerHTML = "DOM (Document Object Model)";
+
+			console.log(allHeadingsObjects[1].innerHTML);
+			allHeadingsObjects[1].innerHTML = "Please note duly:";
+
+			// .value property (value property is used only for <input> and <textarea> fields, to grab user's entered data.)
+			console.log(inputTagObject[0].value)
+			inputTagObject[0].value = "More Garbage text";
+
+			// .style.* property. * to be replace by any CSS key you want to use. Remember, CSS keys with '-' in it for example 'background-color' needs to be written as 'backgroundColor'. See below:
+			allH1HeadingTagObjects[0].style.backgroundColor = "#000000";
+			allH1HeadingTagObjects[0].style.color = "#ffffff";
+			allH1HeadingTagObjects[0].style.fontWeight = "bold";	
+			allH1HeadingTagObjects[0].style.textShadow = "2px 1px 5px #ffffff";
+			allH1HeadingTagObjects[0].style.fontFamily = "verdana";
+
+
+			/* Event properties start with prefix 'on' . For example, onclick, onblur, onfocus etc. Some Event properties names are listed below:
+				1) onclick
+				2) onchange
+				3) onblur
+				4) onfocus
+				5) onsubmit
+				6) onmouseenter
+				7) onmouseleave
+				8) onmousemove
+				9) onkeypress
+				10) onload
+				11) ondblclick
+
+				Each of this above listed property is 'null' bydefault. You need to assign them functions (function reference actually)
+			*/
+
+			allH1HeadingTagObjects[0].onclick = function(){ alert("Hello");  };
+			
+			pageHeadingObject.onmousemove = function()
+											{ 
+												pageHeadingObject.style.backgroundColor = "Red";
+											};
+
+			document.getElementsByTagName("img")[0].ondblclick = 	function()
+																	{
+																		allHeadingsObjects[0].style.color = "Orange";
+																		allHeadingsObjects[1].style.color = "Green";
+																	};
+	</script>
+</body>
+</html>
