@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>window object</title>
+</head>
+<body>
+	<h1>window object</h1>
+	<img src="window-object.png" />
+	<script>
+		/*
+			window is the topmost (root) object. It is not part of standard javascript, but is provided by webbrowsers to access different functionalities of webpage and browser itself. It window object hierarchy:
+
+			window
+			|
+			|---document ------>|----links
+			|---location		|----forms
+			|---history			|----images
+			|---navigator		|----(inbuilt functions like getElementById(), getElementsByTagName() etc)
+			|---screen			|----(childNodes)
+								|----(all global variable and global functions)
+		*/
+
+		window.location.href // contains URL of this html page
+
+		// window.location.reload()   // reload web-page. [Note: I commented this code since it will continously reload the page in a loop.]
+
+		window.location.hostname  // contains domain name. (Note: For this to work you must load this page over http or https protocol)
+
+		window.location.protocol  // protocol used (http:// or https:// or file://)
+
+		window.history.back()  // Is equivant to like clicking back button on web browser
+
+		window.history.forward()  // Is equivant to like clicking forward button on web browser
+
+		window.navigator.vendor // Web browser creator's name, for Chrome it is Google Inc.
+
+		window.navigator.cookieEnabled // Whether cookies are enabled in web browser
+
+		window.navigator.onLine // Check if internet connection is working (or check if we're online)
+
+		window.screen.width // Monitor screen width/resolution in pixels
+
+		window.screen.height // Monitor screen height/resolution in pixels
+	</script>
+</body>
+</html> 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>window object</title>
+</head>
+<body>
+	<h1>AJAX</h1>
+	<input type="button" onclick="fetchData()" value="Fetch data throught AJAX">
+	<br><br>
+	<div id="dataPlaceholder"></div>
+	<script>
+		function fetchData()
+		{
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "server.php", true);
+			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xhr.onreadystatechange 	= 	function()
+										{
+											if(xhr.readyState === 4 && xhr.status === 200)
+											{
+												document.getElementById('dataPlaceholder').innerHTML = xhr.responseText
+											}
+										};
+			xhr.send();
+		}
+	</script>
+</body>
+</html> 
