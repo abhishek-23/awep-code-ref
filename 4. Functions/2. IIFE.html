@@ -13,7 +13,12 @@
 			NOTE: IFFE function's are also used to induce a scope into the program, this is an advanced topic, maybe we see IIFE used during an AJAX code implementations.
 		*/
 		
-		var c = (function sum(a, b){ return a + b; })(1, 2);
+		var c = (
+					function sum(a, b)
+					{ 
+						return a + b; 
+					}
+				)(1, 2);
 
 		alert(c);
 

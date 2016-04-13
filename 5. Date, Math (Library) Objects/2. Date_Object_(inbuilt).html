@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date Object properties/methods</title>
+</head>
+<body>
+	<h1>Date Object properties/methods</h1>
+	<p>Please also see HTML Code.</p>
+	<script>
+		/*
+			Date is an inbuilt (library) Constructor provided by default with Javascript language to perform date operations.
+			
+			Unix Timestamp: It is number of seconds elapsed from 1 Jan 1970 12:00 am. (Visit for more: https://en.wikipedia.org/wiki/Unix_time )
+		*/
+
+		// Date is a constructor. Constructor in JS is created using functions. Function is internally an object. So, this implies Date is a Constructor and an Object both.
+
+		//	Some methods are available directly on Date object and some methods are available an object created via Date Constructor. Lets examine both:
+
+		Date.now();  // Date object contains method named now() which gives the unix timestamp of the present time.
+		// output --> 1460527073313
+
+		Date.parse("Wed, 09 Aug 1995 00:00:00 GMT"); // Converts dateString into unix timestamp, to see all possible combi. of dateString visit https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse 
+		// output --> 807926400000
+
+// ---------------------------------------------------------------------------------------------------
+
+		var myDateObject = new Date(); // 'myDateObject' is created using Date() constructor with present date stored.
+
+		myDateObject.getSeconds();  // returns the seconds (seconds recorded when new Date() constructor was called)
+
+		myDateObject.getMinutes(); // returns the minutes (minutes recorded when new Date() constructor was called)
+
+		myDateObject.getHours();   // returns the hour (hour recorded when new Date() constructor was called)
+
+		myDateObject.getDate(); // returns the Date (Date recorded when new Date() constructor was called)
+
+		myDateObject.getMonth(); // returns the (Month number - 1), Jan is 0, Feb is 1 and likewise (Month number recorded when new Date() constructor was called)
+
+		myDateObject.getFullYear(); // returns the Year (Year recorded when new Date() constructor was called)
+
+		myDateObject.getDay(); // return day number, Sunday is 0, Monday is 1, and so on.
+
+		myDateObject.getTime() // Returns Unix timestamp
+// ------------------------------------------------------------------------------------------------------
+
+		var year = 2012, month = 2, day = 22, hours = 14, minutes = 44, seconds = 59, milliseconds = 103
+;
+		var anotherDateObject = new Date(year, month, day, hours, minutes, seconds, milliseconds); // You can created any date's and time's Date object.
+		// For all possible combinations of parameterised Date() constructor visit http://www.w3schools.com/jsref/jsref_obj_date.asp
+	</script>
+</body>
+</html>

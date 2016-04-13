@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Math Object properties/methods</title>
+</head>
+<body>
+	<h1>Math Object properties/methods</h1>
+	<p>Please also see HTML Code.</p>
+	Change Radius of Circle : 0 <input type="range" id="radiusSelector" min="0" max="10" onchange="calculateArea(this.value)"/> 10
+	<br>
+	Select radius : <span id="showRadius"></span>
+	<br>
+	Area of Circle : <span id="circleArea"></span>
+	<br>
+	Circumference of Circle : <span id="circleCircum"></span>
+	<script>
+		/*
+			Math is an inbuilt (library) object provided by default with Javascript language to perform some of the Mathematical operations.
+			
+			Some of the properties and methods are:
+			Math.PI, Math.sqrt(), Math.exp(), Math.random(), Math.max(), Math.min(), Math.pow(), Math.sin(), Math.cos(), Math.round(), Math.ceil(), Math.floor(), Math.abs()
+		*/
+		console.log(Math.PI);
+		// output --> 3.141592653589793
+		
+		Math.sqrt(4)	// Square root of 4
+		// output --> 2
+
+		Math.exp(2) // Exponential
+		// output --> 7.3890560989306495
+
+		Math.random()  // pseudo random values between 0 and 1
+		// output --> 0.3536248864949083  // <--- any random value will be generated
+
+		Math.max(5, 1, 2, 3)
+		// output --> 5
+		
+		Math.min(5, 1, 2, 3)
+		// output --> 1
+
+		Math.pow(2, 3) // 2 to the power 3
+		// output --> 8
+		
+		Math.sin(0)
+		// output --> 0
+
+		Math.cos(0)
+		// output --> 1
+
+		Math.round(1.56)
+		// output --> 2
+
+		Math.ceil(1.2)
+		// output --> 2
+
+		Math.floor(1.8)
+		// output --> 1
+
+		Math.abs(-154)
+		// output --> 154
+		
+		// Usage Examples
+		function areaOfCircle(radius)
+		{
+			return Math.PI * Math.pow(radius, 2);
+		}
+
+		function circumferenceOfCircle(radius)
+		{
+			return 2 * Math.PI * radius;
+		}
+
+		function calculateArea(radius)
+		{
+			document.getElementById("circleArea").innerHTML = areaOfCircle(radius);
+			document.getElementById("circleCircum").innerHTML = circumferenceOfCircle(radius);
+			document.getElementById("showRadius").innerHTML = radius;
+		}
+
+	</script>
+</body>
+</html> 
