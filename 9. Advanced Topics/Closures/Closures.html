@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Closures</title>
+</head>
+<body>
+	<h1>Closures</h1>
+	<script>
+		/*
+			Closures: 
+		*/
+		function sum(a, b)
+		{   var c = a + b;
+			return 	function()
+					{
+						return c;
+					}
+		}
+
+		var dataFunction = sum(2, 3);
+		var result = dataFunction();
+		// result contains 5 even when if the sum() returned!
+	</script>
+</body>
+</html> 

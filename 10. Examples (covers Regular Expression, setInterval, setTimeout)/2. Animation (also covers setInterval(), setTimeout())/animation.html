@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animation</title>
+	<style>
+		#ballDiv{
+			border-radius: 50%;
+			border: 1px solid;
+			background-color: #00ff00;
+			position: absolute;
+			text-align: center;
+			padding-top: 15px;
+		}
+	</style>
+</head>
+<body>
+	<h1 style="float: right">Animation</h1>
+	<div id="ballDiv">Ball</div>
+	<button style="position: absolute; top: 10px; left: 10px;" onclick="startStop(this);">Start</button>
+	<script>
+		/*
+			Animation: 
+		*/
+		var isStart = false;		
+		var i = 0, j = 0;
+		var isMovingRight = true, isMovingDown = true;
+
+		document.getElementById("ballDiv").style.width = "50px";
+		document.getElementById("ballDiv").style.height = "35px";
+
+		function animate()
+		{
+			var ballDivObj = document.getElementById("ballDiv");
+
+			if(isMovingRight) 
+				i++
+			else
+				i--;
+
+			if(isMovingDown) 
+				j++
+			else
+				j--;
+
+			if(i + parseInt(ballDivObj.style.width) + 2 >= window.innerWidth)
+				isMovingRight = false;
+
+			if(i <= 0)
+				isMovingRight = true;
+
+			if(j + parseInt(ballDivObj.style.height) + 17 >= window.innerHeight)
+				isMovingDown = false;
+
+			if(j <= 0)
+				isMovingDown = true;
+
+			ballDivObj.style.left = i + "px";
+			ballDivObj.style.top = j + "px";
+
+		}
+		
+		function startStop(that)
+		{
+			if(!isStart){
+				window.id = setInterval(animate, 5);
+				isStart = true;
+				that.innerText = "Stop";
+			}else{
+				clearInterval(window.id);
+				isStart = false;
+				that.innerText = "Start";
+			}
+		}
+	</script>
+</body>
+</html> 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OOPs</title>
+</head>
+<body>
+	<h1>OOPs</h1>
+	<script>
+		/*
+			OOPs: This covers only one topic: function constructors
+			
+			Function Constructors: Functions are used to create constructors. (we do not create class since javascript is not class based but prototyping based language. But we can created constructors, an invoking constructors with 'new' operator will give us objects)
+		*/
+
+		// Below is an example of function constructor
+		function Student(fullname, roll, age, password)
+		{
+			// Private data members are created using 'var' keyword
+			var age 		= age;
+			var password 	= password;
+
+			// public data members are created using 'this' keyword
+			this.fullname 	= fullname;
+			this.roll 		= roll;			
+			
+			this.getAge = function()
+			{
+				return age;
+			}
+		}
+
+		var s1 = new Student("Rohit Shetty", 23, 18, "Welcome123");
+
+		var s2 = new Student("Kirti Sharma", 12, 16, "Welcome321");
+
+		console.log(s1.fullname, s1.roll, s1.age, s1.password, s1.getAge());
+
+		console.log(s2.fullname, s2.roll, s2.age, s2.password, s2.getAge());
+
+		console.log(s1);
+
+		console.log(s2);
+
+	</script>
+</body>
+</html> 
