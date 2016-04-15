@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XML with JS</title>
+</head>
+<body>
+	<h1>XML with JS</h1>
+	<button onclick="fetchJSONData();">Fetch JSON Data</button>
+	<div id="container"></div>
+	<script>
+		/*
+
+		*/
+		
+		var jsObject;
+
+		function fetchJSONData()
+		{
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "server.php", true);
+			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xhr.onreadystatechange 	= 	function()
+										{
+											if(xhr.readyState === 4 && xhr.status === 200)
+											{
+												window.jsObject = JSON.parse(xhr.responseText);
+												drawTable(window.jsObject);
+											}
+										};
+			xhr.send();
+		}
+
+		function drawTable(jsObject)
+		{
+			var container = document.getElementById("container");
+			
+			var tableString = "<table border='1'>";
+			tableString += "<tr><td>" + jsObject.name + "</td></tr>";
+			tableString += "<tr><td>" + jsObject.age + "</td></tr>";
+			tableString += "<tr><td>" + jsObject.randomNumbers.toString() + "</td></tr>";
+			for(var subject in jsObject.marks){
+				tableString += "<tr><td>" + subject + ": " + jsObject.marks[subject] + "</td></tr>";
+			}		
+			tableString += "</table>";
+
+			container.innerHTML = tableString;
+		}
+	</script>
+</body>
+</html> 
