@@ -3,25 +3,176 @@
 <head>
 	<title>jQuery Basics</title>
 	<script src="../jquery-2.2.3.js"></script>
+	<style>
+		h1 {
+			background-color: orange;
+		}
+	</style>
 </head>
 <body>
-	<h1>jQuery Basics</h1>
+	<h1 class="headings">jQuery Basics</h1>
+	<h5 class="headings">Please see html code.</h5>
+	<button id="hideshowH1">Hide/Show h1 Tag</button>
+	<button id="hideshowH5">Hide/Show h5 Tag</button>
+	<button id="animateH1">Animate h1 Background</button>
+	<input type="text" name="fullname" value="Will Smith" style="display: none;" />
 	<div id="container"></div>
 	<script>
 		/*
 			From jQuery's homepage: jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
 
-			Including jQuery in your HTML page defines a function with two reference names: $ and jQuery. About almost anything jQuery offers can be performed using this provided function (using any of the two references.) Example
+			Including jQuery in your HTML page defines a function with two reference names: $ and jQuery. About almost anything jQuery offers can be performed using this provided function (using any of the two references.) 
+
+			Basic syntax is: $(selector).action();
+
+			Example:
 		*/
-		
-		$("div#container").html("Please also see the html code.");
 
-		jQuery("div#container").css("color", "#ff0000");
+		$(document).ready(function(){
+			$("div#container").html("Please also see the html code.");
 
-		// ----------------------------------
-		// More content will be added shortly
-		//-----------------------------------
+			// Changing style/css of elements via css()
+			jQuery("div#container").css("color", "#ff0000");
 
+			// Basic selectors: jQuery uses the CSS selectors to select "nodes" from the dom model. Some selector examples:
+				// element selectors
+				$("h1"); 
+				$(document);
+				$("div");
+				$("body");
+
+				// #id selectors
+				$("#container"); 
+				$("h1#container");
+
+				// .class selectors
+				$(".headings"); 
+				$("h1.headings"); 
+				$("h5.headings"); 
+	
+				// ----------------------------------------------
+
+				//  Selectors All
+				$("*"); 
+
+				// Note: More selectors are available please visit: http://www.w3schools.com/jquery/jquery_selectors.asp
+				
+				// Attaching events handlers via jQuery using action function 'on()'
+				$("h1.headings").on("click", function(){  //  <--- This is handler function  
+					alert("<h1> heading is clicked");
+				});
+
+				$("h1.headings").on("mouseenter", function(){ // <--- This is handler function  
+					$(this).css("background-color", "#00ff00");
+				});
+
+				$("h1.headings").on("mouseleave", function(){  // <--- This is handler function  
+					$(this).css("background-color", "");
+				});
+
+				// ----------------------------------------------
+
+				/* 
+				 HTML DOM get or set data:
+					text() - Sets or returns the text content of selected elements (equal to .innerText property in javascript)
+					html() - Sets or returns the content of selected elements (including HTML markup, It is equal to .innerHTML property in javascript)
+					val() - Sets or returns the value of form fields (equal to innerText .value in javascript)
+					attr() - Sets or returns the attribute value of any element/HTML <tag>
+				*/
+				console.log( $("h1").text() );
+				console.log( $("body").html() );
+				console.log( $("input[name='fullname']").val() );
+				console.log( $("input[name='fullname']").attr("style") );
+
+				// ----------------------------------------------
+
+				/* 
+				 HTML DOM manipulation
+					
+					append() - Inserts content at the end of the selected elements
+					prepend() - Inserts content at the beginning of the selected elements
+					after() - Inserts content after the selected elements
+					before() - Inserts content before the selected elements
+				*/
+
+					$("body").append("<div>This is appended text</div>");
+					$("body").prepend("<div>This is prepended text</div>")
+					$("h1.headings").after("<hr>");
+					$("h1.headings").before("<hr>");
+
+				// ----------------------------------------------
+
+				/*
+					CSS manipulation: css(), addClass(), removeClass(), toggleClass()
+					
+				*/
+					$("div#container").css("color", "#ff0000");
+
+					// NOTE: Please visit w3schools for addClass(), removeClass(), toggleClass() : http://www.w3schools.com/jquery/jquery_css_classes.asp
+
+				/*
+					DOM traversing: parent(), children() 
+					Note: Not all functions are covered. find() is such one such function, your Homework is to learn about find().
+				*/
+					$("div#container").parent(); // Returns array containing <body> object at array index 0, (since parent of div#container is body tag)
+					$("body").children(); // Returns all the body tag children object in array form. console.log($("body").children()) to see.
+
+				// ----------------------------------------------
+
+				// Attaching events handlers via jQuery using action functions like click(), dblclick(), blur(), focus(), hover(), mousedown(), mouseup(), mouseleave(), mouseleave()
+
+				$("h5").click(function(){  // <--- This is handler function  
+					alert("<h5> heading is clicked");
+				});
+
+				$("body").dblclick(function(){
+					alert("You double clicked!");
+				});
+				
+				// ----------------------------------------------
+				
+				// jQuery Animation effects action functions like: hide(), show(), toggle(), fadeIn(), fadeOut(), slideUp(), slideDown(), slideToggle(), animate()
+
+				var flag = true;
+				$("#hideshowH5").on("click", function(){
+					if(flag){
+						$("h5").hide(2000);
+						flag = false;
+					}else{
+						$("h5").show(2000);
+						flag = true;
+					}
+				});
+
+				$("#hideshowH1").on("click", function(){
+					$("h1").toggle(2000);
+				});
+				
+				var anotherflag = true;
+				$("#animateH1").on("click", function(){
+					if(anotherflag){
+						$("h1").animate({height: '100px', opacity: '0.4'});
+						anotherflag = false;
+					}else{
+						$("h1").animate({height: '37px', opacity: '1'});
+						anotherflag = true;
+					}
+				});
+		});
+
+				// ----------------------------------------------
+
+			/* jQuery AJAX: $.ajax() */
+				 $.ajax({
+							url: "simple.txt", 
+							success: function(result){
+								$("#container").html(result);
+							},
+							error: function(xhr,status,error){
+								alert("AJAX request failed. Reason: "+ error);
+							}
+				});
+				
 	</script>
 </body>
 </html> 
