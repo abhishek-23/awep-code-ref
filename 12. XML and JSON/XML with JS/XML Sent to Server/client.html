@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XML with JS (Send XML to PHP)</title>
+</head>
+<body>
+	<h1>XML with JS (Send XML to PHP)</h1>
+	<button onclick="fetchXMLData();">Send XML Data</button>
+	<div id="container"></div>
+	<script>
+		/*
+
+		*/
+		
+		var tempData;
+
+		function generalisedAJAX(url, dataToSend, callback)
+		{
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", url, true);
+			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xhr.onreadystatechange 	= 	function()
+										{
+											if(xhr.readyState === 4 && xhr.status === 200)
+											{
+												callback(xhr.responseText);
+											}
+										};
+			xhr.send(dataToSend);
+		}
+
+		function fetchXMLData()
+		{
+			generalisedAJAX("data.xml", null, sendXMLtoPHP);
+		}
+
+		function sendXMLtoPHP(xmldata)
+		{
+			generalisedAJAX("server.php", "xmlString=" + xmldata, handleAfterXMLSent);
+		}
+
+		function handleAfterXMLSent(data)
+		{
+			document.getElementById("container").innerHTML = data;
+		}
+
+	</script>
+</body>
+</html> 
