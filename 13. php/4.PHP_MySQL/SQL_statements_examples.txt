@@ -1,0 +1,40 @@
+Data Manipulation Language (DML) Statements: SELECT, INSERT, UPDATE. DELETE
+===========================================================================
+
+	SELECT * FROM `login_info` WHERE `id`=1;
+
+	SELECT * FROM `login_info` WHERE `username`="root";
+
+	SELECT `username`, `password`, `fullname`, `profession` FROM `login_info` WHERE `id`=1;
+
+	// ------------------------------------------
+
+	INSERT INTO `login_info`(`id`, `username`, `password`, `fullname`, `profession`) VALUES (6, "hmahajan", "<md5-hash>", "Hitesh Mahajan", "Bank Manager");
+
+	INSERT INTO `login_info` VALUES (6, "hmahajan", "<md-5-hash>", "Hitesh Mahajan", "Bank Manager");
+
+	// ------------------------------------------
+
+	UPDATE `login_info` SET `password`="<new-md5-hash>", `profession`="Senior Elec Engineer" WHERE `id`=3;
+
+	// ------------------------------------------
+
+	DELETE FROM `login_info` WHERE `id`=4;
+
+
+Data Definition Language (DDL) Statements: CREATE, DROP
+=======================================================
+
+
+	CREATE TABLE `login_info` (
+		`id` int(11) NOT NULL,
+		`username` varchar(20) NOT NULL,
+		`password` varchar(32) NOT NULL,
+		`fullname` varchar(30) NOT NULL,
+		`profession` varchar(30) NOT NULL,
+		PRIMARY KEY (`id`),
+		UNIQUE KEY `username` (`username`)
+	);
+
+	DROP TABLE `login_info`;
+
