@@ -2,7 +2,7 @@
 
 $max_size = 1024000;
 
-if ($_FILES["mypicture"]["size"] < $max_size && $_FILES["mypicture"]["size"] < $max_size) { // File greater than 1 MB will be rejected
+if ($_FILES["mypicture"]["size"] < $max_size && $_FILES["mydocument"]["size"] < $max_size) { // File greater than 1 MB will be rejected
 	
 	$file1status = $file2status = false;
 
