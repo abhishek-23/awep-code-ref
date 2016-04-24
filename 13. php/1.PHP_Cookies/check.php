@@ -1,7 +1,7 @@
 <?php
-	$connection = mysqli_connect("localhost", "moodle", "Welcome@123", "learnjsphp") or die(mysql_error());
+	$connection = mysqli_connect("localhost", "root", "", "learnjsphp") or die(mysqli_connect_error());
 
-	$result = mysqli_query($connection, "SELECT * FROM `login_info` WHERE `username`=\"" . $_POST['username'] . "\"") or die(mysql_error());
+	$result = mysqli_query($connection, "SELECT * FROM `login_info` WHERE `username`=\"" . $_POST['username'] . "\"") or die(mysqli_error($connection));
 
 	if($row = mysqli_fetch_assoc($result))
 	{

@@ -5,9 +5,9 @@
 
 	if(isset($_SESSION['id']))
 	{
-		$connection = mysqli_connect("localhost", "root", "", "learnjsphp") or die(mysql_error());
+		$connection = mysqli_connect("localhost", "root", "", "learnjsphp") or die(mysqli_connect_error());
 
-		$result = mysqli_query($connection, "SELECT * FROM `login_info` WHERE `id`=\"" . $_SESSION['id'] . "\"");
+		$result = mysqli_query($connection, "SELECT * FROM `login_info` WHERE `id`=\"" . $_SESSION['id'] . "\"") or die(mysqli_error($connection));
 
 		if($row = mysqli_fetch_assoc($result))
 		{

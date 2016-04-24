@@ -1,12 +1,12 @@
 <?php
-	$connection = mysqli_connect("localhost", "root", "", "learnjsphp") or die(mysql_error());
+	$connection = mysqli_connect("localhost", "root", "", "learnjsphp") or die(mysqli_connect_error());
 	
 	$query = "SELECT * FROM `login_info` WHERE `username`=\"root\""; // Hard coded value 'root' is assumed here.
 	
 	// Examine query by echoing/printing it to html. (If required, when sql query fails)
-	echo $query;
+	//echo $query;
 	
-	$result = mysqli_query($connection, $query) or die(mysql_error());
+	$result = mysqli_query($connection, $query) or die(mysqli_error($connection));
 
 	$myarray = array();
 	$i = 0;
