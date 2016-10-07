@@ -1,0 +1,13 @@
+/* 
+	NOTE: 
+		1) Do not use any HTML Tags here in External CSS.
+		2) Do not forget to link this external CSS file in HTML file using <link href="" rel="stylesheet" type="text/css">
+*/
+
+h1#main-title {
+	color: green;
+}
+
+p span, div span {
+	background-color: yellow;
+}

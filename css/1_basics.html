@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS</title>
+	<link rel="stylesheet" type="text/css" href="mystyle.css"> <!-- <=== External Stylesheet -->
+
+<!-- 
+
+	CSS: 	CSS is designed primarily to enable the separation of document content from document presentation, 
+			including aspects such as the layout, colors, and fonts.
+
+	Three ways to write CSS:
+		1) Inline 	CSS
+		2) Internal CSS
+		3) External CSS
+
+	Basic Syntax for Inline Stylesheets (Use 'style' attribute on HTML Tag):
+	==============================================================================
+
+		<p style="property1: value1; property2: value2;  ...  propertyN: valueN;"> Hello </p>
+
+	
+	Basic Syntax for Internal and External Stylesheets :
+	====================================================
+
+		selector 
+		{ 	 						<==== Declaration Blocks
+			property1: value1;
+			property2: value2;
+			.
+			.
+			.
+			propertyN: valueN;
+		}
+
+	CSS Selectors: They determine which HTML Tag (or Element) will the property will apply on.
+	=============
+
+	1) Element Selector
+	-------------------
+		div						an element of type <div>
+		h1						an element of type <h1>
+		body					an element of type <body>
+
+	2) Class Selectors
+	------------------
+		.c						all elements with class="c"
+		div.warn				an <div> element whose class="warn" ( i.e. <div class="warn"> ... </div> )
+
+	3) ID Selectors: [NOTE: id should be unique to each element]
+	--------------
+		#myid					the element with id="myid"
+		div#myid2				an <div> element with id="myid2" ( i.e. <div id="myid2"> ... </div> )
+
+	4) Selector based on relations
+	------------------------------
+		div a					an <div> element descendant of an <a> element
+		E > F					an F element child of an E element
+		E + F					an F element immediately preceded by an E element
+
+	5) Selector all
+	---------------
+		*						any element
+
+	6) Attribute based selectors
+	-----------------------------
+		E[foo]					an E element with a "foo" attribute
+		E[foo="bar"]			an E element whose "foo" attribute value is exactly equal to "bar"
+		E[foo~="bar"]			an E element whose "foo" attribute value is a list of whitespace-separated values, one of which is exactly equal to "bar"
+		E[foo|="en"]			an E element whose "foo" attribute has a hyphen-separated list of values beginning (from the left) with "en"
+		E[foo^="bar"]			an E element whose "foo" attribute value begins exactly with the string "bar"
+		E[foo$="bar"]			an E element whose "foo" attribute value ends exactly with the string "bar"
+		E[foo*="bar"]			an E element whose "foo" attribute value contains the substring "bar"
+
+	7) Pseudo-class selectors
+	-------------------------
+		a:link					an E element is the source anchor of a hyperlink of which the target is not yet visited (:link) or already visited (:visited)
+		a:active				an E element during certain user actions
+
+		E:first-child			an E element, first child of its parent
+		E:last-child			an E element, last child of its parent
+		E:nth-child(n)			an E element, the n-th child of its parent
+		E:nth-last-child(n)		an E element, the n-th child of its parent, counting from the last one
+
+		E:root					an E element, root of the document
+
+	8) Pseudo-element selectors
+	---------------------------
+		E::before				generated content before an E element's content
+		E::after				generated content after an E element's content
+		div::first-line			the first formatted line of an <div> element
+		div::first-letter		the first formatted letter of an <div> element
+
+
+	Cascading Order: (Priorities)
+	================
+		1) Inline style (inside an HTML element)
+		2) External and internal style sheets (in the head section)
+		3) Browser default
+
+	CSS Media Queries: 
+	==================
+	
+		Basic Syntax:
+		-------------
+			@media not|only mediatype and (expressions) and (expressions) and ...
+			{
+				selector1 { property11: value11; }
+
+				selector2 { property21: value21; }
+				.
+				.
+				selectorN  { propertyN1: valueN1; }
+			}
+
+				WHERE, 
+					A) mediatypes available are:
+						1) all
+						2) screen
+						3) print
+						4) speech
+
+					B) expressions (or media feature): min-height, max-height, min-width, max-width, color, orientation, resolution .... 
+
+
+		External stylesheets can also be declared with media queries:
+		-------------------------------------------------------------
+
+			<link rel="stylesheet" media="mediatype and|not|only (expressions)" href="mystyle.css">
+	
+-->
+
+	<style> /* <=== Internal Stylesheet */
+		body {
+			background-color: rgba(255, 165, 0, 0.32);
+		}
+
+		#para2 {
+			color: blue;
+			font-weight: bold;
+		}
+
+		.para3 {
+			color: red;
+			font-weight: bold;
+		}
+
+		@media screen and (max-width: 699px) and (min-width: 520px) {
+			.para3 {
+				color: purple;
+				font-weight: bold;
+				font-style: italic;
+			}
+		}
+
+		@media print {
+			.dontprint1 {
+				display: none;
+			}
+		}
+	</style>
+</head>
+<body>
+	
+	<h1 id="main-title">
+		<abbr title="Cascading Style Sheets">CSS</abbr>
+		<span class="dontprint1"><=== Style applied using  combination of element/HTML Tag and id selector both (in external stylesheet)</span>
+	</h1>
+
+	<p style="color: grey; font-weight: bold;"> <!-- <=== Inline Stylesheet -->
+		This paragraph is applied an <span>Internal style</span>.
+	</p>
+
+	<p id="para2"> <!--  <=== Internal Stylesheet is linked via 'id' attribute -->
+		This paragraph is applied an <span>Internal style</span> via 'id' attribute.
+	</p>
+
+	<div class="para3 dontprint1"> <!--  <=== Internal Stylesheet is linked via 'class' attribute, multiple classes can be applied, not true for id -->
+		This paragraph is applied an <span>Internal style</span> via 'class' attribute.
+	</div>
+
+</body>
+</html> 
