@@ -4,10 +4,27 @@
 		2) Do not forget to link this external CSS file in HTML file using <link href="" rel="stylesheet" type="text/css">
 */
 
+.abc {
+	text-align: right;
+}
+
+div.abc {
+	text-align: left;
+}
+
 h1#main-title {
 	color: green;
 }
 
 p span, div span {
 	background-color: yellow;
+}
+
+#myid1 {
+	color: grey;
+}
+
+#myid1:hover {
+	color: red;
+	background-color: green;
 }

@@ -76,7 +76,7 @@
 	-------------------------
 		a:link					an E element is the source anchor of a hyperlink of which the target is not yet visited (:link) or already visited (:visited)
 		a:active				an E element during certain user actions
-
+		a:hover					an E element when mouse hovers over it
 		E:first-child			an E element, first child of its parent
 		E:last-child			an E element, last child of its parent
 		E:nth-child(n)			an E element, the n-th child of its parent
@@ -167,15 +167,15 @@
 		<span class="dontprint1"><=== Style applied using  combination of element/HTML Tag and id selector both (in external stylesheet)</span>
 	</h1>
 
-	<p style="color: grey; font-weight: bold;"> <!-- <=== Inline Stylesheet -->
+	<p id="myid1" style=" font-weight: bold;"> <!-- <=== Inline Stylesheet -->
 		This paragraph is applied an <span>Internal style</span>.
 	</p>
 
-	<p id="para2"> <!--  <=== Internal Stylesheet is linked via 'id' attribute -->
+	<p class="abc" id="para2"> <!--  <=== Internal Stylesheet is linked via 'id' attribute -->
 		This paragraph is applied an <span>Internal style</span> via 'id' attribute.
 	</p>
 
-	<div class="para3 dontprint1"> <!--  <=== Internal Stylesheet is linked via 'class' attribute, multiple classes can be applied, not true for id -->
+	<div class="para3 dontprint1 abc"> <!--  <=== Internal Stylesheet is linked via 'class' attribute, multiple classes can be applied, not true for id -->
 		This paragraph is applied an <span>Internal style</span> via 'class' attribute.
 	</div>
 
