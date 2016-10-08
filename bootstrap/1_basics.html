@@ -18,13 +18,59 @@
 	==========
 	Bootstrap is a front-end design framework which includes HTML and CSS based design templates, it helps create responsive webpages.
 
+	Bootstrap's Grid system: collection of <div> rows and coloumns.
+	========================
 	
+		Common syntax is:
+		<div class="row">
+			<div class="col-*-**"></div>
+		</div>
+		
+		
+		* denotes possible four grid class:
+			1)	xs (for phones)
+			2)	sm (for tablets)
+			3)	md (for desktops)
+			4)	lg (for larger desktops)
 	
+		** denotes a colspan number for a grid out of 12 possible columns per row
 	
+		NOTE: 
+			1) .container or .container-fluid should be the root class for the grid system.
+			2) Any (bootstrap) component should be kept under coloumns only, apart from the components not made to be compatible with grid system.
+		
 -->
+<style>
+		.show-border {
+			border: 1px solid;
+		}
+</style>
 </head>
 <body class="container">
 	<h1>Welcome to Twitter's Bootstrap</h1>
-	<input class="form-control" type="text" />
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-12 show-border">
+			<table class="table">
+				<caption>Optional table caption.</caption> 
+				<thead> 
+					<tr> <th>#</th> <th>First Name</th> <th>Last Name</th> <th>Username</th> </tr> 
+				</thead>
+				<tbody> 
+					<tr> <th scope="row">1</th> <td>Mark</td> <td>Otto</td> <td>@mdo</td> </tr> 
+					<tr> <th scope="row">2</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td> </tr> 
+					<tr> <th scope="row">3</th> <td>Larry</td> <td>the Bird</td> <td>@twitter</td> </tr> 
+				</tbody> 
+			</table>
+		</div>
+	  </div>
+	  <div class="row">
+		<div class="col-md-5 col-sm-4 show-border">Hello</div>
+		<div class="col-md-5 col-sm-4 show-border">Hello</div>
+		<div class="col-md-2 show-border">Hello</div>
+		<div class="col-md-2 show-border">Hello</div>
+	  </div>
+	 
+	</div>
 </body>
 </html> 
