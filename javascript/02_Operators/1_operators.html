@@ -11,7 +11,7 @@
 			var timeDifference = timeNow.getTime() - timeAtPageLoad.getTime(); // getTime() returns unix timestamp (milli-seconds from 1970)
 
 			if(timeDifference >= 10000) // 10,000 milli-seconds means 10 seconds
-				//window.location = "http://www.w3schools.com/js/js_operators.asp";
+				window.location = "http://www.w3schools.com/js/js_operators.asp";
 				alert("Hi");
 			else
 				document.getElementsByTagName('span')[0].innerText = 10 - Math.round(timeDifference / 1000);
