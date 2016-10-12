@@ -20,6 +20,22 @@
 		var dataFunction = sum(2, 3);
 		var result = dataFunction();
 		// result contains 5 even when if the sum() returned!
+
+		function greeter(salutation){
+			var counter = 0;
+			var prefix = '. ' + salutation + ' ';
+
+			return function(name){
+				counter++;
+				return counter + prefix + name + '!';
+			};
+		}
+
+		var greet = greeter("Hello");
+
+		greet("World");
+		greet("James");
+
 	</script>
 </body>
 </html> 
