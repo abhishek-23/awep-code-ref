@@ -3,10 +3,51 @@
 <head>
 	<title>CSS</title>
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<script>
+		function mySubmit(){
+			
+			var isValid = true;
+			
+			var name = document.getElementsByName("name")[0];
+			var age = document.getElementById("age");
+			var gender = document.getElementsByClassName("gender");
+			var email = document.getElementById("email");
+			
+			var nameRexExp = /^[a-zA-Z ]{3,50}$/;
+			
+			if(name.value.search(nameRexExp) === -1){
+				document.getElementById("nameError").innerHTML = "Name is invalid!";
+				isValid = false;
+			}else{
+				document.getElementById("nameError").innerHTML = "";
+			}
+			
+			var genderFlag = false;
+			
+			for(var i = 0; i < gender.length; i++){
+				if(gender[i].checked){
+					genderFlag = true;
+					break;
+				}
+			}
+			
+			if(!genderFlag){
+				document.getElementById("genderError").innerHTML = "Please select gender!";
+				isValid = false;
+			}else{
+				document.getElementById("genderError").innerHTML = "";
+			}
+			
+			if(isValid){
+				document.getElementById("myform2").submit();
+			}
+		}
+		
+	</script>
 	<style>
 		body {
 			margin: 0px;
-			background-image: url(a.jpg);
+			
 		}
 		.header-container{
 			background-color: #3594b1; box-shadow: 0px 6px 20px;
@@ -29,6 +70,14 @@
 		}
 		.logo {
 			width: 150px;
+		}
+		.header-container{
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d0e4f7+0,73b1e7+24,0a77d5+100,539fe1+100,87bcea+100 */
+			background: #d0e4f7; /* Old browsers */
+			background: -moz-linear-gradient(top, #d0e4f7 0%, #73b1e7 24%, #0a77d5 100%, #539fe1 100%, #87bcea 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top, #d0e4f7 0%,#73b1e7 24%,#0a77d5 100%,#539fe1 100%,#87bcea 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom, #d0e4f7 0%,#73b1e7 24%,#0a77d5 100%,#539fe1 100%,#87bcea 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0e4f7', endColorstr='#87bcea',GradientType=0 ); /* IE6-9 */
 		}
 	</style>
 </head>
@@ -53,8 +102,56 @@
 			</div>
 		</div>
 	</div>
-	
+	<div style="width: 1000px; margin: 0px auto; box-shadow: 0px 0px 10px; padding: 50px 20px;">
+		<div style="width: 550px; display: inline-block; vertical-align: top;">
+			<img src="http://comps.canstockphoto.com/can-stock-photo_csp16274683.jpg" alt="College Pic"/>
+		</div>
+		<div style="width: 350px;  display: inline-block;  vertical-align: top;">
+			<form id="myform2">
+				<table>
+					<caption><span style="font-size: 24px;">Registration</span></caption>
+					<tr>
+						<td>Name</td>
+						<td>:</td>
+						<td>
+							<input type="text" name="name" />
+							<span id="nameError"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Age</td>
+						<td>:</td>
+						<td>
+							<input type="number" name="age" />
+							<span id="ageError"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Gender</td>
+						<td>:</td>
+						<td>
+							<input type="radio" class="gender" name="gender" value="m" /> Male | <input type="radio" class="gender" name="gender" value="f" /> Female 
+							<span id="genderError"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td>:</td>
+						<td><input type="text" name="email" /></td>
+						<span id="emailError"></span>
+					</tr>
+					<tr>
+						<td align="center" colspan="3">
+							<input id="mysubmit" type="button" value="Submit" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
 	<div style="position: fixed; right: 0px; top: 200px;"><button>Help</button></div>
-	
+	<script>
+		document.getElementById("mysubmit").onclick = mySubmit;
+	</script>
 </body>
 </html> 

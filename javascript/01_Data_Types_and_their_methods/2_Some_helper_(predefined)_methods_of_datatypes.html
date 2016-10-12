@@ -98,7 +98,9 @@
 		nameList.length
 		// output --> 4
 
-		nameList.sort(); // Sorts the array contents according to alphabetical order
+		nameList.sort(function(a, b){
+			a - b;
+		}); // Sorts the array contents according to alphabetical order
 		// output --> ["Kirti", "Nikita", "Rahul", "Rohan"]
 
 		nameList.concat(["Kanika", "Tanmay"]); // Combine two arrays into one new list and returns that list
