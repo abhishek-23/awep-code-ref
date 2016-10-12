@@ -83,5 +83,19 @@
 																		allHeadingsObjects[1].style.color = "Green";
 																	};
 	</script>
+	<input type="text" name="fullname" />
+	<input type="number" name="age" />
+	<input type="button" onclick="showData();" value="Show above data" />
+	<script>
+		function showData(){
+			var fullNameObj = document.getElementsByName("fullname")[1];
+			var ageObj = document.getElementsByName("age")[0];
+			
+			var fullname = fullNameObj.value;
+			var age = ageObj.value;
+			
+			alert("Name: " + fullname + ", age: " + age );
+		}
+	</script>
 </body>
 </html>
