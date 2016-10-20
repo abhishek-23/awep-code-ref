@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>AngularJS Basics</title>
+	<script src="angular.js"></script>
+</head>
+<body ng-controller="MyFirstController">
+	<h1>Welcome to AngularJS Basics</h1>
+
+	Name: <input type="text" ng-model="yourName" placeholder="Enter your name here"><br>
+	State: <input type="text" ng-model="yourState" placeholder="Enter state here"><br>
+
+	<input type="button" ng-click="addUser()" value="Add to List">
+
+	<h4>Preview:</h4>
+ 	{{ userData.length + 1 }}. {{ yourName }} - {{ yourState }}
+
+	<h4>User List</h4>
+    <ol>
+		<li ng-repeat="data in userData | orderBy : 'name'">{{ data.name }} - {{ data.state | uppercase }}</li>
+	</ol>
+<script>
+	var myApp = angular.module('myApp', []);
+	
+	myApp.controller('MyFirstController', ['$scope', function( $scope ){
+
+		// Model data
+		$scope.userData = [
+			{ name : 'Mohid Ahmed', 		state : 'Maharashtra'	},
+			{ name : 'Abhishek Sharma', 	state : 'Rajasthan' 	}
+		];
+
+		// Some Logic
+		$scope.addUser = function(){
+			$scope.userData.push({ name: $scope.yourName, state: $scope.yourState });
+			$scope.yourName = $scope.yourState = "";
+		};
+
+	}]);
+</script>
+</body>
+<!-- 
+	Scope		: This Connects Model with View (via controller) 
+
+	filters		: Used to filter the model data on different criteria. 
+
+-->
+</html>

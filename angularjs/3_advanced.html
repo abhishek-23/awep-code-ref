@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html data-ng-app="demoApp">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS Advanced</title>
+	<script src="angular.js"></script>
+	<script src="angular-route.js"></script>
+</head>
+<body>
+	<h2>Welcome to AngularJS Advanced</h2>
+	<div>
+		<div data-ng-view=""></div>
+	</div>
+
+	<script>
+		// Defining controllers to the module
+		var controllers = {};
+
+		controllers.SimpleController = function ($scope, simpleFactory) {
+	        $scope.customers = null;
+	        
+	        $scope.customers = simpleFactory.getCustomersData();
+	        
+	        $scope.addCustomer = function(){
+	        	$scope.customers.data.push({
+	        		name: $scope.newCustomer.name,
+	        		state: $scope.newCustomer.state
+	        	});
+	        }
+	    };
+	    
+	    // Creating a module (or say creating ng-app)
+		var demoApp = angular.module("demoApp", ['ngRoute']);
+		
+		// Defining routes in config
+		demoApp.config(function($routeProvider){
+			$routeProvider
+				.when("/view1", {
+					controller: "SimpleController",
+					templateUrl: "partial/partA.html"
+				}).when("/view2", {
+					controller: "SimpleController",
+					templateUrl: "partial/partB.html"
+				}).otherwise({
+					redirectTo: "/view1"
+				});
+		});
+		
+		demoApp.factory('simpleFactory', function($http){
+			var customers = {data: null};
+
+			$http.get("userdata.json").then(function(response){
+				customers.data = response.data;
+			});
+			
+			var factory = {};
+			
+			factory.getCustomersData = function(){
+				return customers;
+			};
+			
+			return factory;
+		});
+		
+		// Attaching Controllers to the module
+		demoApp.controller(controllers);
+	</script>
+</body>
+<!-- 
+	Services	: A service is a function, or object, that is can be injected into your controller or factory to provide some basic functionalities.
+				  Some inbuilt services: $http, $location, $timeout, $interval
+
+				Create your own services like:
+				------------------------------
+				demoApp.service('simpleService', function() {
+					this.myFunc = function (x) {
+						return x.toString(16);
+					}
+				});
+
+				inject it into controller like this:
+				------------------------------------
+				demoApp.controller('SimpleController', function($scope, simpleFactory, simpleService) {
+					$scope.hex = hexafy.myFunc(255);
+				});
+
+-->
+</html>

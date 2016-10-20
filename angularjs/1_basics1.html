@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<title>AngularJS Basics</title>
+	<script src="angular.js"></script>
+</head>
+<body>
+	<h1>Welcome to AngularJS Basics</h1>
+
+	Name: <input type="text" ng-model="yourName" placeholder="Enter your name here">
+ 
+    <h2>Hello {{yourName}}!</h2>
+</body>
+<!-- 
+	AngularJS
+	=========
+
+	1) Client Side JS MVW or MV* Framework. ( MVC and MVVM ? )
+
+	2) AngularJS is used to create Single Page Applications (SPAs like gmail.com, saavn.com, paytm.com)
+
+	3) Misko Hevery (a Google employee) started working on AngularJS in 2009.
+
+	4) AngularJS 1.0 released in 2012. AngularJS 2.0 released in 15 September 2016. Supported by Google.
+
+	NOTE: We'll consider AngularJS as MVC. Let's try to understand AngularJS in MVC Architectural terms:
+
+	Model		: Plain old JS Objects		->	(contains data)
+
+	View		: HTML page 				->	(enhanced with Angular's Directives and Expressions)
+
+	Controller	: Plain old JS functions 	->	(contains logic)
+
+	-----------------------------------------------------------------------------------------
+
+	Directives	: This teaches HTML new functionalities with help of AngularJS's own custom Elements or Attributes. 
+				  (And even through class and a comment!)
+
+	Expressions	: Displays model data in an HTML Page. Model data is wrapped in {{ }} syntax.
+
+
+	Modules		: Defines an AngularJS app. Everything is defined under a module/app. It is the main container. 
+				  Modules can import other modules.	
+-->
+</html>
