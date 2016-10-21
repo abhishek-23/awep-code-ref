@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS Form Validation</title>
+	<script src="angular.js"></script>
+	<style>
+		input[type=text].ng-invalid,input[type=email].ng-invalid{
+			box-shadow: 0px 0px 8px red;
+		}
+		.green{
+			background-color: #48fd48;
+		}
+	</style>
+</head>
+<body>
+	<h2>Welcome to AngularJS Form Validation</h2>
+	<form ng-controller="validateCtrl" name="myForm" novalidate>
+		<p>
+			Username:<br>
+			<input type="text" name="user" ng-model="user" ng-class="{ green: user === 'Abhishek' }" pattern="[a-zA-Z]{3,20}" required>
+			<span ng-show="user === 'Abhishek'">Hey Abhishek</span>
+			<span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+				<span ng-show="myForm.user.$error.required">Username is required.</span>
+				<span ng-show="myForm.user.$error.pattern">Username must contain no spaces and alphabets only.</span>
+			</span>
+		</p>
+		<p>
+			Email:<br>
+			<input type="email" name="email" ng-model="email" required>
+			<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+			<span ng-show="myForm.email.$error.required">Email is required.</span>
+				<span ng-show="myForm.email.$error.email">Invalid email address.</span>
+			</span>
+		</p>
+		<p>
+			Gender:<br>
+			<input type="radio" name="gender" ng-model="gender" value="male" id="male" required> <label for="male">Male</label>
+			<input type="radio" name="gender" ng-model="gender" value="female" id="female" required> <label for="female">Female</label>
+			<span style="color:red" ng-show="myForm.gender.$error.required">
+				*required.
+			</span>
+		</p>
+		<p>
+			Section:<br>
+			<select name="section" ng-model="section" ng-options="sec for sec in sections" required></select>
+			<span style="color:red" ng-show="myForm.section.$error.required">Section is required.</span>
+		</p>
+		<p>
+			<input type="submit" ng-disabled="
+					myForm.user.$dirty && myForm.user.$invalid 
+					|| myForm.email.$dirty && myForm.email.$invalid
+					|| myForm.gender.$invalid
+					|| myForm.section.$invalid
+			" ng-click="submitForm()">
+		</p>
+	</form>
+
+	<script>
+var app = angular.module('myApp', []);
+app.controller('validateCtrl', function($scope) {
+    $scope.user = 'JohnDoe';
+    $scope.email = 'john.doe@gmail.com';
+	$scope.gender = null;
+	$scope.sections = ["Section A", "Section B", "Section B"];
+	$scope.section = null;
+
+	$scope.submitForm = function(){
+		// Write submit code using $http service. I am just alerting:
+		alert("Form Submitted");
+	};
+});
+</script>
+</body>
+<!-- 
+	Input fields have the following states:
+
+		$untouched 	-	The field has not been touched yet
+		$touched	-	The field has been touched
+
+		$pristine	-	The field has not been modified yet
+		$dirty 		-	The field has been modified
+
+		$invalid 	-	The field content is not valid
+		$valid 		-	The field content is valid
+
+	Forms have the following states:
+
+		$pristine 	-	No fields have been modified yet
+		$dirty 		-	One or more have been modified
+
+		$invalid 	-	The form content is not valid
+		$valid 		-	The form content is valid
+
+		$submitted 	-	The form is submitted
+
+	#### They are all properties of the input field, and are either true or false.
+-->
+</html>

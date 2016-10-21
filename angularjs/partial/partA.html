@@ -1,6 +1,6 @@
 <div class="container">
 	<h2>View 1</h2>
-	Name:
+	Search (by Name):
 	<br/>
 	<input type="text" data-ng-model="filter.name">
 	<br/>
@@ -8,11 +8,11 @@
 		<li data-ng-repeat="cust in customers.data | filter: filter.name | orderBy: 'name'"> {{ cust.name }} - {{ cust.state }} </li>
 	</ol>
 	<br/>
-	Customer Name:
+	Name:
 	<br />
 	<input type="text" data-ng-model="newCustomer.name">
 	<br />
-	Customer State:
+	State:
 	<br />
 	<input type="text" data-ng-model="newCustomer.state">
 	<button data-ng-click="addCustomer()">Add Customer</button>

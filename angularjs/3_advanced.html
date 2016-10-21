@@ -81,7 +81,7 @@
 				inject it into controller like this:
 				------------------------------------
 				demoApp.controller('SimpleController', function($scope, simpleFactory, simpleService) {
-					$scope.hex = hexafy.myFunc(255);
+					$scope.hex = simpleService.myFunc(255);
 				});
 
 -->

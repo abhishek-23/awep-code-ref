@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html data-ng-app="demoApp">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS Advanced</title>
+	<script src="angular.js"></script>
+	<script src="angular-route.js"></script>
+</head>
+<body>
+	<welcome-header></welcome-header>
+	<div>
+		<div data-ng-view=""></div>
+	</div>
+
+	<script>
+		var demoApp = angular.module("demoApp", ['ngRoute']);
+		
+		demoApp.config(function($routeProvider){
+			$routeProvider
+				.when("/view1", {
+					controller: "SimpleController",
+					templateUrl: "partial/partA.html"
+				}).when("/view2", {
+					controller: "SimpleController",
+					templateUrl: "partial/partB.html"
+				}).otherwise({
+					redirectTo: "/view1"
+				});
+		});
+
+		demoApp.run(function($rootScope) {
+			$rootScope.fullname = "Guest";
+		});
+
+		demoApp.controller("SimpleController", function ($scope, simpleFactory, simpleService) {
+	        $scope.customers = null;
+	        
+	        $scope.customers = simpleFactory.getCustomersData();
+	        
+	        $scope.addCustomer = function(){
+	        	$scope.customers.data.push({
+	        		name: $scope.newCustomer.name,
+	        		state: simpleService.myToUpperCase($scope.newCustomer.state)
+	        	});
+	        }
+	    });
+		
+		// Custom service using factory
+		demoApp.factory('simpleFactory', function($http){
+			var customers = {data: null};
+
+			$http.get("userdata.json").then(function(response){
+				customers.data = response.data;
+			});
+			
+			var factory = {};
+			
+			factory.getCustomersData = function(){
+				return customers;
+			};
+			
+			return factory;
+		});
+
+		// Custom service
+		demoApp.service('simpleService', function() {
+			this.myToUpperCase = function (str) {
+				return str.toUpperCase();
+			}
+		});
+
+		// Custom directive
+		demoApp.directive("welcomeHeader", function() {
+			return {
+				restrict : "ECMA", 				// E for Element, A for Attribute, C for Class, M for Comment
+				// templateUrl: "partial/partB.html",
+				// controller: "SimpleController",
+				template : "<h1>Welcome to Angular World, {{ fullname }}!</h1>" 
+			};
+		});
+	</script>
+</body>
+</html>
