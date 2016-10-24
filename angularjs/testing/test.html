@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<!-- Jasmine dependencies -->
+		<link rel="stylesheet" href="lib/jasmine.css" />
+		<script src="lib/jasmine.js"></script>
+		<script src="lib/jasmine-html.js"></script>
+		<script src="lib/boot.js"></script>
+
+		<!-- Angular dependencies -->
+		<script src="lib/angular.js"></script>
+		<script src="lib/angular-mocks.js"></script>
+
+		<!-- Application -->
+		<script src="main.js"></script>
+
+		<!-- Tests -->
+		<script src="tests.js"></script>
+	</head>
+	<body>
+	</body>
+<!--
+AngularJS: Jasmine test framework can be used to do unit testing of Angular JS Components.
+
+Jasmine's main concepts:
+========================
+
+	Suites: describe(string, function) functions, take a title and a function containing one or more specs.
+	------
+	Specs: it(string, function) functions, take a title and a function containing one or more expectations.
+	------
+	Expectations: are assertions that evaluate to true or false. Basic syntax reads expect(actual).toBe(expected)
+	------------
+	Matchers: are predefined helpers for common assertions. Eg: toBe(expected), toEqual(expected). Find a complete list here.
+	--------
+		expect(fn).toThrow(e);
+		expect(instance).toBe(instance);
+		expect(mixed).toBeDefined();
+		expect(mixed).toBeFalsy();
+		expect(number).toBeGreaterThan(number);
+		expect(number).toBeLessThan(number);
+		expect(mixed).toBeNull();
+		expect(mixed).toBeTruthy();
+		expect(mixed).toBeUndefined();
+		expect(array).toContain(member);
+		expect(string).toContain(substring);
+		expect(mixed).toEqual(mixed);
+		expect(mixed).toMatch(pattern);
+
+	Setup and teardown: beforeEach(), afterEach(), beforeAll(), afterAll() functions.
+	------------------
+	pending specs: by using xit and xdescribe you can decide which specs or suites to run.
+	-------------
+
+	# Visit https://medium.com/angularjs-meetup-south-london/angular-unit-testing-with-jasmine-24795a44998e#.n2m6orrvt for more examples.
+-->
+<html>
